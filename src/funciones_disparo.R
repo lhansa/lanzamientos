@@ -1,20 +1,3 @@
-# function [x,y]=disparo(v,alpha)
-# 
-# g=9.8;
-# ux=v*cos(alpha);
-# uy=v*sin(alpha);
-# 
-# if uy <= 0 %si disparamos hacia abajo
-#   x=0; y=0;
-#   return;
-# end
-# 
-# Tmax=2*uy/g;
-# t=linspace(0,Tmax,1000);
-# x=ux*t;
-# y=uy*t-g*t.^2/2;
-# end
-
 disparo <- function(v, alpha, g = 9.8, instantes = 100){
   ux <- v * cos(alpha)
   uy <- v * sin(alpha)
