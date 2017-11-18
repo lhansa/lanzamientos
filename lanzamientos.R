@@ -44,6 +44,26 @@ P
 
 gganimate(P, interval = 0.1)
 
+## Disparos con rozamiento ---------------------------------
+
+v <- 10
+n <- 5
+
+datos <- map(1:n, function(k) {
+  alpha <- pi / 2 * k / n
+  return(disparo(v, alpha, instantes = 50))
+}) %>%
+  bind_rows(.id = "disparo") %>%
+  mutate(disparo = as.factor(as.numeric(disparo))) %>%
+  arrange(tiempo)
+
+P <- ggplot(datos, aes(x, y, frame = tiempo, cumulative = TRUE)) + 
+  geom_point(aes(color = disparo), size = 1, alpha = 0.7) + 
+  scale_color_brewer(palette = "Set1")
+P
+
+gganimate(P, interval = 0.1)
+
 # 
 # %% Disparo con rozamiento
 # 
